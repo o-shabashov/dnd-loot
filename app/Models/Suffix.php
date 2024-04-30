@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Prefix
+ * Class Suffix
  *
  * @property int    $id
  * @property string $group_dice_raw
@@ -16,11 +16,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class Prefix extends Model
+class Suffix extends Model
 {
     public    $timestamps = false;
-    protected $table      = 'prefixes';
-    protected $fillable = [
+    protected $table      = 'suffixes';
+    protected $fillable   = [
         'group_dice_raw',
         'dice_raw',
         'name',
