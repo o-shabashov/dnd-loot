@@ -36,12 +36,21 @@ function baseItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, i
     }
 
     if ($usePrefix) {
-        $prefix = Prefix::ofDice($dice, 'group_dice_raw')->ofDice($d20plusLevel, 'dice_raw')->get()->first();
+        $prefix = Prefix::ofDice(d100(), 'group_dice_raw')->ofDice($d20plusLevel, 'dice_raw')->get()->first();
     }
 
     if ($useSuffix) {
-        $suffix = Suffix::ofDice($dice, 'group_dice_raw')->ofDice($d20plusLevel, 'dice_raw')->get()->first();
+        $suffix = Suffix::ofDice(d100(), 'group_dice_raw')->ofDice($d20plusLevel, 'dice_raw')->get()->first();
     }
 
-    return $prefix?->name . ' '. $item?->name . ' '. $suffix?->name. '<br>' .$item?->effect . '<br>' .$item?->cost . ' золотых монет';
+    return "Suffix name: " . $suffix?->name . "<br>" .
+           "Suffix effect: " . $suffix?->effect . "<br>" .
+           "Suffix cost: " . $suffix?->cost . "<br>" .
+           "Group name: " . $item?->group->name . "<br>" .
+           "Item name: " . $item?->name . "<br>" .
+           "Item effect: " . $item?->effect . "<br>" .
+           "Item cost: " . $item?->cost . "<br>" .
+           "Prefix name: " . $prefix?->name . "<br>" .
+           "Prefix effect: " . $prefix?->effect . "<br>" .
+           "Prefix cost: " . $prefix?->cost . "<br>";
 }

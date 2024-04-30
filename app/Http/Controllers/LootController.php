@@ -9,7 +9,7 @@ class LootController extends Controller
 {
     public function __invoke()
     {
-        $dungeonLevel = request('dungeon_level', 10);
+        $dungeonLevel = request('dungeon_level', 1);
 
         // Roll d20 to determine basic treasure
         $item = match (d20()) {
@@ -36,7 +36,9 @@ class LootController extends Controller
         };
 
         // TODO normalize 36+ as a 36-100
-//        return view('welcome', compact('dungeonLevel', 'item'));
-        dump(compact('dungeonLevel', 'item'));
+        // TODO delete NBSPC from cost tables
+        // TODO replace id by 1d in DB
+
+        return response($item, 200);
     }
 }
