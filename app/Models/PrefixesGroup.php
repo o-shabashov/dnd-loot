@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ScopeOfDice;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class PrefixesGroup extends Model
 {
+    use ScopeOfDice;
+
     public    $timestamps = false;
     protected $table      = 'prefixes_groups';
     protected $fillable = [

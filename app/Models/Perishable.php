@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ScopeOfDice;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Perishable extends Model
 {
+    use ScopeOfDice;
+
     public    $timestamps = false;
     protected $table      = 'perishables';
     protected $fillable = [
