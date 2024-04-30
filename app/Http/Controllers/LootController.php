@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Armor;
-use App\Models\BaseItem;
 use Illuminate\Http\Request;
+use function App\Helpers\{d20, d60, d100, baseItem};
 
 class LootController extends Controller
 {
@@ -36,28 +35,8 @@ class LootController extends Controller
             },
         };
 
+        // TODO normalize 36+ as a 36-100
+
         return view('welcome', compact('dungeonLevel', 'item'));
     }
-}
-
-function d20()
-{
-    return mt_rand(1, 20);
-}
-
-function d60()
-{
-    return mt_rand(1, 60);
-}
-
-function d100()
-{
-    return mt_rand(1, 100);
-}
-
-function baseItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, int $dungeonLevel = 1): BaseItem
-{
-    return match ($dice) {
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, => Armor::getItem(usePrefix: $usePrefix, useSuffix: $useSuffix, dungeonLevel: $dungeonLevel),
-    };
 }
