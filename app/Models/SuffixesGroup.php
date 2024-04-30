@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class SuffixesGroup
@@ -21,4 +22,9 @@ class SuffixesGroup extends Model
         'dice_raw',
         'name',
     ];
+
+    public function suffixes(): HasMany
+    {
+        return $this->hasMany(Suffix::class, 'group_dice_raw', 'dice_raw');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class PrefixesGroup
@@ -21,4 +22,9 @@ class PrefixesGroup extends Model
         'dice_raw',
         'name',
     ];
+
+    public function prefixes(): HasMany
+    {
+        return $this->hasMany(Prefix::class, 'group_dice_raw', 'dice_raw');
+    }
 }

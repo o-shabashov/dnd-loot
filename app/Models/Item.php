@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Item
@@ -27,4 +28,9 @@ class Item extends Model
         'effect',
         'cost',
     ];
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(ItemsGroup::class, 'group_dice_raw', 'dice_raw');
+    }
 }

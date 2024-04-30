@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class ItemsGroup
@@ -21,4 +22,9 @@ class ItemsGroup extends Model
         'dice_raw',
         'name',
     ];
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(Item::class, 'group_dice_raw', 'dice_raw');
+    }
 }

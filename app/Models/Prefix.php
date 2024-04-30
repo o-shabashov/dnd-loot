@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Prefix
@@ -27,4 +28,9 @@ class Prefix extends Model
         'effect',
         'cost',
     ];
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(PrefixesGroup::class, 'group_dice_raw', 'dice_raw');
+    }
 }

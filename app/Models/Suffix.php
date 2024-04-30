@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Suffix
@@ -27,4 +28,9 @@ class Suffix extends Model
         'effect',
         'cost',
     ];
+
+    public function group(): BelongsTo
+    {
+        return $this->belongsTo(SuffixesGroup::class, 'group_dice_raw', 'dice_raw');
+    }
 }
