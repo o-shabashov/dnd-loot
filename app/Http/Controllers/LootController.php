@@ -35,6 +35,6 @@ class LootController extends Controller
             },
         };
 
-        return response($item, 200);
+        return view('welcome', compact('item'));
     }
 }
