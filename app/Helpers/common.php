@@ -22,7 +22,7 @@ function d100(): int
     return mt_rand(1, 100);
 }
 
-function baseItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, int $dungeonLevel = 1): string
+function generateItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, int $dungeonLevel = 1): array
 {
     $d20plusLevel = d20() + $dungeonLevel;
     $prefix = $suffix = null;
@@ -43,14 +43,16 @@ function baseItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, i
         $suffix = Suffix::ofDice(d100(), 'group_dice_raw')->ofDice($d20plusLevel, 'dice_raw')->get()->first();
     }
 
-    return "Suffix name: " . $suffix?->name . "<br>" .
-           "Suffix effect: " . $suffix?->effect . "<br>" .
-           "Suffix cost: " . $suffix?->cost . "<br>" .
-           "Group name: " . $item?->group->name . "<br>" .
-           "Item name: " . $item?->name . "<br>" .
-           "Item effect: " . $item?->effect . "<br>" .
-           "Item cost: " . $item?->cost . "<br>" .
-           "Prefix name: " . $prefix?->name . "<br>" .
-           "Prefix effect: " . $prefix?->effect . "<br>" .
-           "Prefix cost: " . $prefix?->cost . "<br>";
+    return [$prefix, $item, $suffix];
+
+    // "Suffix name: " . $suffix?->name . "<br>" .
+    //        "Suffix effect: " . $suffix?->effect . "<br>" .
+    //        "Suffix cost: " . $suffix?->cost . "<br>" .
+    //        "Group name: " . $item?->group->name . "<br>" .
+    //        "Item name: " . $item?->name . "<br>" .
+    //        "Item effect: " . $item?->effect . "<br>" .
+    //        "Item cost: " . $item?->cost . "<br>" .
+    //        "Prefix name: " . $prefix?->name . "<br>" .
+    //        "Prefix effect: " . $prefix?->effect . "<br>" .
+    //        "Prefix cost: " . $prefix?->cost . "<br>";
 }
