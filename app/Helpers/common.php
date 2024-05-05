@@ -44,15 +44,4 @@ function generateItem(int $dice, bool $usePrefix = false, bool $useSuffix = fals
     }
 
     return [$prefix, $item, $suffix];
-
-    // "Suffix name: " . $suffix?->name . "<br>" .
-    //        "Suffix effect: " . $suffix?->effect . "<br>" .
-    //        "Suffix cost: " . $suffix?->cost . "<br>" .
-    //        "Group name: " . $item?->group->name . "<br>" .
-    //        "Item name: " . $item?->name . "<br>" .
-    //        "Item effect: " . $item?->effect . "<br>" .
-    //        "Item cost: " . $item?->cost . "<br>" .
-    //        "Prefix name: " . $prefix?->name . "<br>" .
-    //        "Prefix effect: " . $prefix?->effect . "<br>" .
-    //        "Prefix cost: " . $prefix?->cost . "<br>";
 }
