@@ -859,7 +859,7 @@
         class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
         <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
             <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                <div class="flex lg:justify-center lg:col-start-2">
+                <div class="flex lg:justify-center lg:col-start-2" style="cursor: pointer">
                     <h2 onClick="window.location.reload();">Dungeon level: {{ $dungeonLevel }}</h2>
                 </div>
             </header>
@@ -868,7 +868,8 @@
                 <div class="grid gap-6 lg:grid-cols-1 lg:gap-8">
 
                     <div
-                        class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]">
+                        class="items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
+                        style="text-align: center">
                         <h1 class="text-xl font-semibold text-black dark:text-white">{{$item?->group?->name}}</h1>
                     </div>
 
@@ -906,8 +907,7 @@
                         </div>
                     </div>
 
-                    <a
-                        href="https://laravel-news.com"
+                    <div
                         class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]"
                     >
                         <div
@@ -942,7 +942,7 @@
                                 </p>
                             @endif
                         </div>
-                    </a>
+                    </div>
 
                     <div
                         class="flex items-start gap-4 rounded-lg bg-white p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] lg:pb-10 dark:bg-zinc-900 dark:ring-zinc-800 dark:hover:text-white/70 dark:hover:ring-zinc-700 dark:focus-visible:ring-[#FF2D20]">
@@ -959,25 +959,23 @@
                         </div>
 
                         <div class="pt-3 sm:pt-5">
-                            <div class="pt-3 sm:pt-5">
-                                @if($suffix?->name)
-                                    <h2 class="text-xl font-semibold text-black dark:text-white">
-                                        {{ $suffix->name }}
-                                    </h2>
-                                @endif
+                            @if($suffix?->name)
+                                <h2 class="text-xl font-semibold text-black dark:text-white">
+                                    {{ $suffix->name }}
+                                </h2>
+                            @endif
 
-                                @if($suffix?->effect)
-                                    <p class="mt-4 text-xl" style="color: darkcyan;">
-                                        {{ $suffix->effect }}
-                                    </p>
-                                @endif
+                            @if($suffix?->effect)
+                                <p class="mt-4 text-xl" style="color: darkcyan;">
+                                    {{ $suffix->effect }}
+                                </p>
+                            @endif
 
-                                @if($suffix?->cost)
-                                    <p class="mt-4 text-xl" style="color: bisque;">
-                                        {{ $suffix->cost }}💰
-                                    </p>
-                                @endif
-                            </div>
+                            @if($suffix?->cost)
+                                <p class="mt-4 text-xl" style="color: bisque;">
+                                    {{ $suffix->cost }}💰
+                                </p>
+                            @endif
                         </div>
                     </div>
                 </div>
