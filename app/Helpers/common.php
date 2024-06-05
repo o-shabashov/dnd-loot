@@ -22,6 +22,22 @@ function d100(): int
     return mt_rand(1, 100);
 }
 
+function dSmith(): int
+{
+    return mt_rand(1, 65);
+}
+
+function dWitch(): int
+{
+    return mt_rand(65, 90);
+}
+
+function dHeal(): int
+{
+    return mt_rand(91, 100);
+}
+
+
 function generateItem(int $dice, bool $usePrefix = false, bool $useSuffix = false, int $dungeonLevel = 1): array
 {
     $d20plusLevel = d20() + $dungeonLevel;
