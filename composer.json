@@ -10,6 +10,7 @@
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
+        "aschmelyun/fleet": "^1.1",
         "dragon-code/laravel-data-dumper": "^1.0",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
