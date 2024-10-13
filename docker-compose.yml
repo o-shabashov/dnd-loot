@@ -1,5 +1,5 @@
 services:
-    dnd-loot-localhost:
+    dnd-loot:
         build:
             context: ./vendor/laravel/sail/runtimes/8.3
             dockerfile: Dockerfile
@@ -8,6 +8,8 @@ services:
         image: sail-8.3/app
         extra_hosts:
             - 'host.docker.internal:host-gateway'
+        ports:
+            - '${APP_PORT:-80}:80'
         environment:
             WWWUSER: '${WWWUSER}'
             LARAVEL_SAIL: 1
@@ -18,12 +20,9 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
-            - fleet
         depends_on:
             - mysql
-        labels:
-            - traefik.http.routers.dnd-loot-localhost.rule=Host(`dnd-loot.localhost`)
-            - traefik.http.services.dnd-loot-localhost.loadbalancer.server.port=80
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -41,22 +40,13 @@ services:
         networks:
             - sail
         healthcheck:
-            test:
-                - CMD
-                - mysqladmin
-                - ping
-                - '-p${DB_PASSWORD}'
+            test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
             timeout: 5s
+
 networks:
     sail:
         driver: bridge
-    fleet:
-        external: true
 volumes:
     sail-mysql:
-        driver: local
-    sail-redis:
-        driver: local
-    sail-meilisearch:
         driver: local
